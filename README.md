@@ -2,69 +2,75 @@
 
 ## Project Overview
 
-This project consists of a **pre-existing backend API** and a **newly developed frontend application**.  
-I developed the **frontend** to provide a user-friendly interface that interacts with the existing backend API for managing products, stock operations, and sales operations.
+This project consists of a **pre-existing backend API** and a **newly developed frontend** that I built based on an existing Figma UI design.  
+I translated the design into a working frontend using HTML, CSS, and vanilla JavaScript, and connected it to the backend via API.
 
 ---
 
-## Frontend Technologies and Logic
+## 🔧 Technologies and Logic Used
 
-- **Technologies used:**  
-  - HTML, CSS for structure and styling  
-  - Vanilla JavaScript with `XMLHttpRequest` for API communication  
-  - Modular JavaScript code organized into reusable components/modules
-
-- **Frontend Responsibilities:**  
-  - Managing product listings: create, read, update, delete (CRUD) operations  
-  - Handling stock and sales operations with validation and dynamic UI updates  
-  - Connecting asynchronously to backend API endpoints to fetch and send data  
-  - Implementing search and filtering features  
-  - Error handling and user feedback within the frontend  
+- **Frontend:**
+  - UI design (not by me) from [Figma](https://www.figma.com/design/GhvclsuMFaTHMthjjmpClY?fuid=1426157545911206879)
+  - HTML & CSS for layout and styling
+  - Vanilla JavaScript with modular structure
+  - `XMLHttpRequest` for all API requests
+- **Logic Implemented:**
+  - Full CRUD operations (products, stock, sales)
+  - Search and filtering
+  - Dynamic UI updates
+  - Stock quantity validation
+  - Error handling and user feedback
+- **API Testing:** via Postman (`tools/STORE-API.postman_collection.json`)
 
 ---
 
-## Frontend Applications
-
-The frontend is composed of three main applications, each serving a specific purpose:
+## 🧩 Frontend Applications
 
 ### 1. Gestion Produit (Product Management)
 
-- Manage product information through the API:  
-  display, create, edit, delete, and search products.  
-- **API Endpoints Used:**  
-  `GET /products`, `GET /products/:id`, `POST /products`, `PUT /products/:id`, `DELETE /products/:id`, `GET /products?search={query}`
+- Manage product data via API.
+- Features: list, create, update, delete, search.
+- API Used:
+  - `GET/POST/PUT/DELETE /products`
+  - `GET /products?search={query}`
 
-### 2. Operation Stock (Stock Operations)
+### 2. Operation Stock (Stock In)
 
-- Manage incoming stock operations including multiple products per operation:  
-  list, create, delete, view details, and search stock operations.  
-- **API Endpoints Used:**  
-  `GET /stock-operations`, `GET /stock-operations/:id`, `POST /stock-operations`, `DELETE /stock-operations/:id`, `GET /stock-operations?search={query}`, `GET /products`
+- Manage incoming stock operations.
+- API Used:
+  - `GET/POST/DELETE /stock-operations`
+  - `GET /products` for selection
+  - `GET /stock-operations?search={query}`
 
-### 3. Operation Ventes (Sales Operations)
+### 3. Operation Ventes (Sales Out)
 
-- Manage sales operations with multiple products and stock validation:  
-  list, create, delete, view details, and search sales operations.  
-- **API Endpoints Used:**  
-  `GET /sell-operations`, `GET /sell-operations/:id`, `POST /sell-operations`, `DELETE /sell-operations/:id`, `GET /sell-operations?search={query}`, `GET /products`
-
----
-
-## Existing Backend API
-
-- The backend is a pre-existing Node.js Express API included in this repository but **not developed by me**.  
-- It exposes RESTful endpoints for products, stock operations, and sales operations.  
-- Runs by default on `http://localhost:3000`.
+- Handle sales transactions and validate stock.
+- API Used:
+  - `GET/POST/DELETE /sell-operations`
+  - `GET /products`
+  - `GET /sell-operations?search={query}`
 
 ---
 
-## How to Run the Project
+## 🔌 Backend API (Pre-Existing)
+
+- Node.js Express API
+- Runs on `http://localhost:3000`
+- Routes:
+  - `/products`
+  - `/stock-operations`
+  - `/sell-operations`
+- **Note:** I did not build the backend.
+
+---
+
+## 🚀 How to Run the Project
 
 ### Prerequisites
 
-- Node.js (v14+ recommended)  
-- npm  
-- MongoDB running locally or remotely  
+- Node.js
+- npm
+- MongoDB running locally or remotely
 
 ### 1. Clone the repository
 
