@@ -1,0 +1,95 @@
+
+/* new product and  button modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal .close {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.modal-content input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 8px;
+}
+
+.modal-buttons .cancel {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-buttons .save {
+  background-color: rgba(119, 73, 248, 1);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.modal-content h3 {
+  margin: 0;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 16px;
+}
+
+.modal-content input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  border-bottom: 1px solid #e5e7eb; /* optional bottom line */
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+  gap: 8px;
+}
+/* editer produit modal */
+.delet_produit{
+    color: red;
+}
+h2 .alertdeletprd{
+    font-size: 40px;
+}

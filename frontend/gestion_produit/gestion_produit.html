@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/785d83627b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/frontend/style/main.css">
+    <link rel="stylesheet" href="/frontend/gestion_produit/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- header of the  logo -->
+    <nav>
+        <h1>E-STORE</h1>
+    </nav>
+    <!-- main -->
+    <main>
+        <!-- sidbar -->
+        <div class="aside_navbar">
+            <ul>
+                <li><a href="#" class="active"> Gestion Produits</a></li>
+                <li><a href="/frontend/operation_stock/operation_stock.html">Opérations Stock</a></li>
+                <li><a href="/frontend/operation_ventes/operation_ventes.html">Opérations Ventes</a></li>
+            </ul>
+        </div>
+        <!-- page content -->
+        <div class="content">
+            <!-- title -->
+            <h1>Produits</h1>
+            <!-- page wontent wrapper -->
+            <div class="content_wrapper">
+                <div class="table_action">
+                    <!-- searsh input  -->
+                    <div class="searsh">
+                        <input type="text" oninput="prdsearsh(this.value)" placeholder="chercher un roduit">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <!-- add new product button  -->
+                    <button type="button" onclick="openModal('newproduct')">Nouveau Produit</button>
+                    <!-- Modal -->
+                    <div id="newproduct" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h3>Nouveau Produit</h3>
+                            <input id="newnaminput" type="text" placeholder="Saisir le Titre du Produit" />
+                            <div class="modal-buttons">
+                                <button class="cancel">Annuler</button>
+                                <button class="save" onclick=creatnewproduct()>Enregistrer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product_table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Title</th>
+                                <th>Qté en Stock</th>
+                                <th>Qté en vendue</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- we well get the data from the api  -->
+
+                            <!-- thoas are the modal  -->
+                            <!-- edit product by id modal -->
+                            <div id="editer-produit-modal" class="modal">
+                                <div class="modal-content">
+                                    <span class="close">&times;</span>
+                                    <h3>Editer Produit </h3>
+                                    <input id="editerpreduitinput" type="text" placeholder="iphone 13" />
+                                    <div class="modal-buttons">
+                                        <button class="cancel">Annuler</button>
+                                        <button class="save" onclick=editerproductbyid()>Enregistrer</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- delet product by id modal -->
+                            <div id="delet-produit-modal" class="modal">
+                                <div class="modal-content">
+                                    <span class="close">&times;</span>
+                                    <h3>Editer Produit </h3>
+                                    <div class="productnamedeletnotification"></div>
+                                    <div class="modal-buttons">
+                                        <button class="cancel">Annuler</button>
+                                        <button class="save" onclick=deletproductbyid()>Supprimer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- feedback message notification -->
+    <div id="feedback-message"
+        style="display:none; position:fixed; top:20px; right:20px; z-index:1000; padding:10px; border-radius:5px; min-width:200px;">
+    </div>
+    <div id="loading-indicator"
+        style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); z-index:2000; background:#fff; padding:20px; border-radius:8px; box-shadow:0 0 10px #0002;">
+        <span>Chargement...</span>
+    </div>
+    <script src="/frontend/gestion_produit/gestion_prod.js"></script>
+
+</body>
+
+</html>

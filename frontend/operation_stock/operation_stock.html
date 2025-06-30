@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/785d83627b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/frontend/style/main.css">
+    <link rel="stylesheet" href="/frontend/operation_stock/style.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- header of the  logo -->
+    <nav>
+        <h1>E-STORE</h1>
+    </nav>
+    <!-- main -->
+    <main>
+        <!-- sidbar -->
+        <div class="aside_navbar">
+            <ul>
+                <li><a href="/frontend/gestion_produit/gestion_produit.html">Gestion Produits</a></li>
+                <li><a href="#" class="active">Opérations Stock</a></li>
+                <li><a href="/frontend/operation_ventes/operation_ventes.html">Opérations Ventes</a></li>
+            </ul>
+        </div>
+        <!-- page content -->
+        <div class="content">
+            <!-- title -->
+            <h1>Opérations Stock</h1>
+            <!-- page wontent wrapper -->
+            <div class="content_wrapper">
+                <div class="table_action">
+                    <!-- searsh input  -->
+                    <div class="searsh">
+                        <input type="text" oninput="prdsearsh(this.value)" placeholder="chercher un roduit">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <!-- add new product button  -->
+                    <button type="button" onclick="openModal('newOpérations')">Nouveau Opérations</button>
+                    <!-- Modal -->
+                    <div id="newOpérations" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h3>nouvelle opération Stock</h3>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="nom_fornisseur">Nom Fournisseur</label><br>
+                                    <input type="text" id="nom_fornisseur" placeholder="Saisir le nom du fournisseur"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="dat_livraison">Date Livraison</label><br>
+                                    <input type="date" id="dat_livraison" value="2024-05-04" required>
+                                </div>
+                            </div>
+                            <div class="product-list">
+                                <h3>Produits</h3>
+                                <div id="productlistshow">
+                                    <!-- <span class="product-name">${item.name}</span>
+                                        <span class="product-qty">${item.quantity}</span>
+                                        <button class="delete-btn" onclick="this.parentElement.remove()">×</button> -->
+                                </div>
+                            </div>
+                            <div class="add-product">
+                                <select id="productchoise">
+                                    <option disabled>Choisir un Produit </option>
+                                    <!-- we well get the other ption from the api  -->
+                                </select>
+                                <input type="number" id="quantity"  placeholder="Saisir la Quantité">
+                                <button onclick="newproductquantity()">＋</button>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn-cancel">Annuler</button>
+                                <button class="btn-save" onclick="newoperation()">Enregistrer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product_table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Fournisseur</th>
+                                <th>Date</th>
+                                <th>Nomber Produit </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- we well get the data from the api  -->
+
+
+                        </tbody>
+                    </table>
+                    <!-- thoas are the modal  -->
+                    <!-- edit operation by id modal -->
+                    <div id="show-detail-modal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h3>details  opération Stock</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="nom_fornisseur">Nom Fournisseur</label><br>
+                                    <input type="text" id="nom_fornisseur" placeholder="Saisir le nom du fournisseur"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="dat_livraison">Date Livraison</label><br>
+                                    <input type="date" id="dat_livraison" value="2024-05-04" required>
+                                </div>
+                            </div>
+                            <div class="product-list">
+                                <h3>Produits</h3>
+                                <div id="productlistshow">
+                                    <!-- <span class="product-name">${item.name}</span>
+                                        <span class="product-qty">${item.quantity}</span>
+                                        <button class="delete-btn" onclick="this.parentElement.remove()">×</button> -->
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button class="btn-cancel">Annuler</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- delet operation by id modal -->
+                    <div id="delet-operation-modal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h3>supprimer opération Stock</h3>
+                            <div class="form-row productdeletbyid"  style="gap:60px; padding-top: 10px;">
+                                <!-- we well get the text in js by dom so wa can add the variable from the  -->
+                            </div>
+
+                            <div class="modal-footer">
+                                <button class="btn-cancel">Annuler</button>
+                                <button class="btn-save" onclick="deletoperationbyid()" style="background-color: red;">supprimer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+        <!-- feedback message notification -->
+    <div id="feedback-message"
+        style="display:none; position:fixed; top:20px; right:20px; z-index:1000; padding:10px; border-radius:5px; min-width:200px;">
+    </div>
+    <div id="loading-indicator"
+        style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); z-index:2000; background:#fff; padding:20px; border-radius:8px; box-shadow:0 0 10px #0002;">
+        <span>Chargement...</span>
+    </div>
+    <script src="/frontend/operation_stock/operation_stock.js"></script>
+
+</body>
+
+</html>

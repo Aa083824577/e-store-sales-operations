@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Liste des Stagiaires</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 8px;
+    }
+    input, select, button {
+      margin: 5px;
+    }
+  </style>
+</head>
+<body onload="remplirFiliere(); chargerStagiairesInitiales(); AfficherList();">
+
+  <h2>Formulaire Stagiaire</h2>
+  <form>
+    <input type="text" id="nom" placeholder="Nom">
+    <input type="text" id="prenom" placeholder="Prénom">
+    <select id="filiere"></select>
+    <input type="number" id="moyenne" placeholder="Moyenne" step="0.1" min="0" max="20">
+    <button type="button" onclick="AjouterStagiaire()">Ajouter</button>
+  </form>
+
+  <h2>Liste des Notes</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Filière</th>
+        <th>Moyenne</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="tabStagiaire"></tbody>
+  </table>
+
+  <script>
+    // Q2 : Liste des filières
+    const filieres = ["TDI", "TRI", "IDV", "DEV"];
+
+    function remplirFiliere() {
+      let select = document.getElementById("filiere");
+      select.innerHTML = ""; // vide d'abord
+      filieres.forEach(filiere => {
+        let option = document.createElement("option");
+        option.value = filiere;
+        option.textContent = filiere;
+        select.appendChild(option);
+      });
+    }
+
+    // Q3 : Créer 3 stagiaires
+    let listStg = [];
+
+    function chargerStagiairesInitiales() {
+      let stg1 = { nom: "Ali", prenom: "Amine", filiere: "TDI", moyenne: 15 };
+      let stg2 = { nom: "Sara", prenom: "Elh", filiere: "IDV", moyenne: 18 };
+      let stg3 = { nom: "Kamal", prenom: "Omar", filiere: "DEV", moyenne: 10 };
+      listStg.push(stg1, stg2, stg3);
+
+      console.log("Stagiaires avec moyenne > 10 :");
+      listStg.forEach(stg => {
+        if (stg.moyenne > 10) {
+          console.log(`${stg.nom} ${stg.prenom} - ${stg.moyenne}`);
+        }
+      });
+    }
+
+    // Q4.1 : Afficher la liste
+    function AfficherList() {
+      let table = document.getElementById("tabStagiaire");
+      table.innerHTML = "";
+      listStg.forEach((stg, index) => {
+        table.innerHTML += `
+          <tr>
+            <td>${stg.nom}</td>
+            <td>${stg.prenom}</td>
+            <td>${stg.filiere}</td>
+            <td>${stg.moyenne}</td>
+            <td><button onclick="SupprimerStagiaire(${index})">Supprimer</button></td>
+          </tr>
+        `;
+      });
+    }
+
+    // Q4.2 : Ajouter un stagiaire
+    function AjouterStagiaire() {
+      let nom = document.getElementById("nom").value.trim();
+      let prenom = document.getElementById("prenom").value.trim();
+      let filiere = document.getElementById("filiere").value;
+      let moyenne = parseFloat(document.getElementById("moyenne").value);
+
+      if (nom && prenom && filiere && !isNaN(moyenne)) {
+        listStg.push({ nom, prenom, filiere, moyenne });
+        AfficherList();
+
+        // Réinitialiser formulaire
+        document.getElementById("nom").value = "";
+        document.getElementById("prenom").value = "";
+        document.getElementById("moyenne").value = "";
+        document.getElementById("filiere").selectedIndex = 0;
+      } else {
+        alert("Veuillez remplir tous les champs correctement.");
+      }
+    }
+
+    // Q4.3 : Supprimer un stagiaire
+    function SupprimerStagiaire(index) {
+      if (confirm("Voulez-vous vraiment supprimer ce stagiaire ?")) {
+        listStg.splice(index, 1);
+        AfficherList();
+      }
+    }
+  </script>
+
+</body>
+</html>

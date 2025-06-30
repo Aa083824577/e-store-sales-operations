@@ -1,0 +1,165 @@
+/* === Modal Overlay === */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* === Modal Box === */
+.modal-content {
+  background: #ffffff;
+  padding: 24px 32px;
+  border-radius: 12px;
+  width: 700px;
+  height: 421px;
+  max-width: 95%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+
+/* === Close Button === */
+.modal .close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #888;
+  transition: color 0.2s ease;
+}
+.modal .close:hover {
+  color: #333;
+}
+
+/* === Modal Title === */
+.modal-content h3 {
+  margin: 0;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 20px;
+  color: #333;
+}
+
+/* === Form Row Layout === */
+.form-row {
+  display: flex;
+  margin-top: 2px;
+  padding-bottom: 13px;
+  flex-wrap: wrap;
+  gap: 120px;
+}
+
+
+
+/* === Input Field Groups === */
+.form-group label {
+  font-weight: 500;
+  color: #444;
+}
+.form-group input[type="text"],
+.form-group input[type="date"] {
+  display: flex;
+  padding: 10px 12px;
+  width: 150%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+.form-group input:focus {
+  border-color: #7749f8;
+  outline: none;
+}
+/* prodact added section the product well show in js  */
+
+
+#productlistshow {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  overflow-y: auto;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+
+/* Product Item */
+.product-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  padding: 12px 15px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+/* === Add Product Section === */
+.add-product {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.add-product select,
+.add-product input[type="number"] {
+  padding: 10px 12px;
+  width: 300px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.add-product button {
+  background-color: #000000;
+  color: white;
+  border: none;
+  padding: 10px 10px;
+  font-size: 18px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition:  0.2s ease;
+}
+.add-product button:hover {
+  background-color: #342b4f;
+}
+
+/* === Modal Footer Buttons === */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 32px;
+  gap: 12px;
+}
+.btn-cancel,
+.btn-save {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:  0.2s ease;
+}
+.btn-cancel {
+  background-color: #ccc;
+  color: #333;
+}
+.btn-cancel:hover {
+  background-color: #ccc;
+}
+.btn-save {
+  background-color: #7749f8;
+  color: white;
+}
+.btn-save:hover {
+  background-color: #5f3ad6;
+}
