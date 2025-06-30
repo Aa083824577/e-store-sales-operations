@@ -10,7 +10,7 @@ I translated the design into a working frontend using HTML, CSS, and vanilla Jav
 ## 🔧 Technologies and Logic Used
 
 - **Frontend:**
-  - UI design (not by me) from [Figma](https://www.figma.com/design/GhvclsuMFaTHMthjjmpClY?fuid=1426157545911206879)
+  - UI design (not by me) from [Figma](https://www.figma.com/design/GhvclsuMFaTHMthjjmpClY/E-Store?node-id=5489-395&t=tM4HU2F5dLl6BMNl-1)
   - HTML & CSS for layout and styling
   - Vanilla JavaScript with modular structure
   - `XMLHttpRequest` for all API requests
