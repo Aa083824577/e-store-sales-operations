@@ -1,6 +1,5 @@
 window.onload = function () {
   loaddata();
-  selectedchoisedata();
 };
 
 let editingProductId = null;
@@ -13,6 +12,9 @@ function openModal(id, productId) {
   if (modal) {
     // show model by flex
     modal.style.display = "flex";
+    
+    selectedchoisedata();
+
 
     // Close modal when clicking the X and clicking annuler button
     const closeBtn = modal.querySelectorAll(".close, .btn-cancel");
@@ -261,7 +263,16 @@ function prdsearsh(value) {
                 `;
         index++;
       }
+    }else {
+      showFeedback("Erreur lors du searsh des donnes.", "error");
     }
+  };
+  request.onerror = function () {
+    showLoading(false);
+    showFeedback(
+      "Erreur réseau lors de la searsh des donnes .",
+      "error"
+    );
   };
 }
 

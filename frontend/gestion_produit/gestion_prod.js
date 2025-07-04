@@ -108,9 +108,18 @@ function creatnewproduct() {
       let modal = document.querySelector(".modal");
       modal.style.display = "none";
       loaddata();
-    }
+      showFeedback("Produit ajouté avec succès !");
+    }else {
+      showFeedback("Erreur lors de la modification.", "error");
+      showLoading(false);
+
+    };
+  }   
+  request.onerror = function () {
+      showLoading(false);
+      showFeedback("Erreur réseau lors d'ajouter un produit.", "error");
   };
-}
+};
 
 // edit product by id
 
@@ -134,8 +143,9 @@ function editerproductbyid() {
       const modal = document.getElementById("editer-produit-modal");
       modal.style.display = "none";
       loaddata();
+      showFeedback("Produit modifié avec succès !");
     } else {
-      showFeedback("Erreur lors de la modification.", "error");
+      showFeedback("Erreur lors de la modification du produit.", "error");
     }
     request.onerror = function () {
       showLoading(false);
@@ -197,11 +207,22 @@ function prdsearsh(value) {
                 </td>
                 </tr>
                 `;
-        index++;
+        index++
+        showFeedback("Données de tableaux chargées avec succès !");
       }
+    }else {
+      showFeedback("error lor de la recherch.", "error");
     }
   };
+  request.onerror = function () {
+    showLoading(false);
+    showFeedback(
+      "Erreur réseau lors de la suppression de l'opération.",
+      "error"
+    );
+  };
 }
+
 
 // Show feedback message
 function showFeedback(message, type = "success") {
