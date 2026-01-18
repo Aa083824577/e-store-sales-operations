@@ -1,3 +1,11 @@
+## Project Versions
+
+- **v1 – main branch:** Uses XMLHttpRequest
+- **v2 – axios-version branch:** Uses Axios for cleaner API calls
+
+You can switch branches on GitHub to see the version you want.
+
+
 # E-Store Sales Operations
 
 ## Project Overview
