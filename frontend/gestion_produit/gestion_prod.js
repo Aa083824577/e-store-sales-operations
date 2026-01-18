@@ -1,4 +1,6 @@
+// so here i well build the second version of the project so i well build it with axios-http 
 // this
+
 let editingProductId = null;
 
 function openModal(id, productId) {
@@ -64,7 +66,7 @@ function loaddata() {
                 <tr>
                 <td>${index}</td>
                 <td>${post.title}</td>
-                <td>${post.stocks} unités</td>
+                <td>${post.stock_available} unités</td>
                 <td>${post.sells} unités</td>
                 <td>
                 <a href="#" onclick="openModal('editer-produit-modal','${post.id}')" ><i class="fa-solid fa-square-pen"></i></a>
